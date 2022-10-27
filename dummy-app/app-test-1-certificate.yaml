@@ -6,7 +6,7 @@ metadata:
 spec: 
   dnsNames:
     - ec2-54-171-198-244.eu-west-1.compute.amazonaws.com
-  secretName: app-cert-tls
+  secretName: app-tls
   issuerRef:
     name: selfsigned-cluster-issuer 
     kind: ClusterIssuer 

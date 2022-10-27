@@ -41,20 +41,3 @@ spec:
   selector:
     app: nginx
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: nginx-ingress
-  namespace: web
-spec:
-  rules:
-  - host: "ec2-54-171-198-244.eu-west-1.compute.amazonaws.com"
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: nginx-svc
-            port:
-              number: 80
