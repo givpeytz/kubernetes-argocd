@@ -1,0 +1,11 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: selfsigned-cert
+  namespace: cert-manager
+spec:
+  dnsNames:
+    - ec2-54-171-198-244.eu-west-1.compute.amazonaws.com
+  secretName: selfsigned-cert-tls
+  issuerRef:
+    name: selfsigned
