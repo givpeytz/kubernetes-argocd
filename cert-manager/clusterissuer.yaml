@@ -3,4 +3,12 @@ kind: ClusterIssuer
 metadata:
   name: selfsigned-cluster-issuer
 spec:
-  selfSigned: {}
+  acme: 
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: giv@peytz.dk
+    privateKeySecretRef:
+      name: letsencrypt-cluster-issuer-key
+    solvers:
+    - http01:
+       ingress:
+         class: nginx
