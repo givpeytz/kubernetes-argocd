@@ -18,7 +18,7 @@ spec:
   - http:
       paths:
       - pathType: Prefix
-        path: /
+        path: /dummy
         backend:
           service:
             name: nginx-svc 
