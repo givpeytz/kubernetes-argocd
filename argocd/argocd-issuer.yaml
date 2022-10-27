@@ -1,7 +1,7 @@
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
-  name: selfsigned
-  namespace: cert-manager
+  name: selfsigned-issuer
+  namespace: argocd
 spec:
   selfSigned: {}

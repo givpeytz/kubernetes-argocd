@@ -6,8 +6,7 @@ metadata:
 spec: 
   dnsNames:
     - ec2-54-171-198-244.eu-west-1.compute.amazonaws.com
-  secretName: argocd-tls-secret
+  secretName: argocd-cert-tls
   issuerRef:
-    name: letsencrypt-cluster-issuer
-    kind: ClusterIssuer
+    name: selfsigned-issuer
  
