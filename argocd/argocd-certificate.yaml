@@ -5,7 +5,8 @@ metadata:
   namespace: argocd
 spec: 
   dnsNames:
-    - k8snlb-b83f782db155b193.elb.eu-west-1.amazonaws.com
+    - argocd.fitaws.dk
   secretName: argocd-secret
   issuerRef:
-    name: selfsigned-issuer
+    name: selfsigned-cluster-issuer
+    kind: ClusterIssuer 
