@@ -37,11 +37,11 @@ jobs:
           git config --global user.email "giv@peytz.dk"
           # Implementing a github.com interaction , so we can interact with git@github.com, in order to download/clone the k8s repo
           #ssh-keygen -t rsa -N '' -f ~/.ssh/${SSH_KEY_NAME} <<< y
-          ssh-keygen -b 2048 -t rsa -f ~/datree/${SSH_KEY_NAME} -q -N ""
-          echo "${SSH_PRIVATE_KEY}" > ~/datree/${SSH_KEY_NAME}
-          echo "${SSH_PUBLIC_KEY}" > ~/datree/${SSH_KEY_NAME}.pub
-          sudo chmod 400 ~/datree/${SSH_KEY_NAME}
-          mv ~/datree/${SSH_KEY_NAME}* ~/.ssh/
+          ssh-keygen -b 2048 -t rsa -f ${SSH_KEY_NAME} -q -N ""
+          echo "${SSH_PRIVATE_KEY}" > ${SSH_KEY_NAME}
+          echo "${SSH_PUBLIC_KEY}" > ${SSH_KEY_NAME}.pub
+          sudo chmod 400 ${SSH_KEY_NAME}
+          mv ${SSH_KEY_NAME}* ~/.ssh/
           eval `ssh-agent -s`
           ssh-add ~/.ssh/${SSH_KEY_NAME}
           ssh-add -l -E sha256
