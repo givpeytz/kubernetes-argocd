@@ -30,11 +30,24 @@ jobs:
         run: |
           sudo apt update
           sudo apt install git openssh-client curl -y
+          # Installing the Datree tool
           curl https://get.datree.io | /bin/bash
+          # Configuring git
           git config --global user.name "givpeytz"
           git config --global user.email "giv@peytz.dk"
+          # Implementing a github.com interaction , so we can interact with git@github.com, in order to download/clone the k8s repo
+          ssh-keygen -t rsa -N '' -f ~/.ssh/${SSH_KEY_NAME} <<< y
+          echo "${SSH_PRIVATE_KEY}" > ~/.ssh/${SSH_KEY_NAME}
+          echo "${SSH_PUBLIC_KEY}" > ~/.ssh/${SSH_KEY_NAME}.pub
+          chmod 400 ~/.ssh/${SSH_KEY_NAME}
+          eval `ssh-agent -s`
+          ssh-add ~/.ssh/${SSH_KEY_NAME}
+          ssh-add -l -E sha256
+          ssh-keyscan -t rsa "github.com" >> ~/.ssh/known_hosts
+          # Cloning the k8s repo
           git clone git@github.com:givpeytz/kubernetes-argocd.git
           cd kubernetes-manifests/kubernetes-argocd/
+          # Implementing the Datree tool's scanner
           datree test argocd/*
           datree test cert-manager/*
           datree test dummy-app/*
