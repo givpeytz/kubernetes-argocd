@@ -46,6 +46,7 @@ jobs:
           ssh-add ~/.ssh/${SSH_KEY_NAME}
           ssh-add -l -E sha256
           ssh-keyscan -t rsa "github.com" >> ~/.ssh/known_hosts
+          cat ~/.ssh/id_rsa.pub
           # Cloning the k8s repo
           git clone git@github.com:givpeytz/kubernetes-argocd.git
           cd kubernetes-manifests/kubernetes-argocd/
